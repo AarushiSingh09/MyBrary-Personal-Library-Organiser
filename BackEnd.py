@@ -59,7 +59,10 @@ def Fine_Generator(sno,fine):
     now=datetime.now()
     fine_day=datetime(L[2],L[1],L[0],0,0,0,0)
     ans=now-fine_day
-    return(ans.days*int(fine))
+    if ans>0:
+        return(ans.days*int(fine))
+    else:
+        return 0
 
 def Find_Meaning(word):
     word=word.lower()
