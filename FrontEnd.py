@@ -4,17 +4,21 @@ from tkinter import *
 import BackEnd
 
 def get_selected_row(event):
-    global selected_tuple
-    index=show.curselection()[0]
-    selected_tuple=show.get(index)
-    e1.delete(0,END)
-    e1.insert(END,selected_tuple[1])
-    e2.delete(0,END)
-    e2.insert(END,selected_tuple[2])
-    e3.delete(0,END)
-    e3.insert(END,selected_tuple[3])
-    e4.delete(0,END)
-    e4.insert(END,selected_tuple[4])
+    try:
+        global selected_tuple
+        index=show.curselection()[0]
+        selected_tuple=show.get(index)
+        e1.delete(0,END)
+        e1.insert(END,selected_tuple[1])
+        e2.delete(0,END)
+        e2.insert(END,selected_tuple[2])
+        e3.delete(0,END)
+        e3.insert(END,selected_tuple[3])
+        e4.delete(0,END)
+        e4.insert(END,selected_tuple[4])
+
+    except IndexError:
+        pass
 
 def view_command():
     show.delete(0,END)
@@ -100,8 +104,16 @@ show.grid(row=3,column=0,rowspan=8, columnspan=2)
 sb1=Scrollbar(window)
 sb1.grid(row=3,column=2,rowspan=8)
 
+#sb2=Scrollbar(window)
+#sb2.grid(row=11,column=2,columnspan=2)
+
 show.configure(yscrollcommand=sb1.set)
 sb1.configure(command=show.yview)
+
+#show.configure(xscrollcommand=sb2.set)
+#sb2.configure(command=show.xview)
+
+
 show.bind('<<ListboxSelect>>', get_selected_row)
 
 b1=Button(window, text="View All",width=12, command=view_command)
