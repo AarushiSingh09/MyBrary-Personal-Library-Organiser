@@ -6,3 +6,4 @@ Creates a Database for all the entries
 Updates , Delete, Enter new entries and Search
 Generates Fine
 Search for the meaning of different words
+Website blocker
